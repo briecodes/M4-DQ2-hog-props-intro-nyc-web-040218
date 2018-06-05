@@ -7,13 +7,15 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
+      ...Offspring
     }
   }
 
   render() {
+    console.log(this.state.offspring)
     return (
       <div className="App">
-        
+        < MasterHog offspring={this.state.offspring} />
       </div>
     )
   }
