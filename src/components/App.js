@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.offspring)
+    // console.log(this.state.offspring)
     return (
       <div className="App">
         < MasterHog offspring={this.state.offspring} />

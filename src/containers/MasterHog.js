@@ -25,9 +25,8 @@ class MasterHog extends Component {
 
 
   render() {
-    console.log(this.state.offspring)
     let babies = this.state.offspring.map((baby) => {
-      return < BabyHog baby={baby} eyes={this.state.eyeColor} />
+      return < BabyHog baby={baby} eyes={this.state.eyeColor} key={baby.id} />
     });
     return (
       <div>

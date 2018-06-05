@@ -17,32 +17,30 @@ class BabyHog extends Component {
     super(props)
     this.state = {
       weight: props["baby"].weight,
-      // eyeColor: props["eyes"],
-      name: props["baby"].name
+      name: props["baby"].name,
+      imgHeight: 200
     }
   }
 
   selectImg() {
-    if (this.props["eyes"] === "blue"){
-      return imgMapper.blue
-    }else if (this.props["eyes"] === "glowing"){
-      return  imgMapper.glowing
-    }else if (this.props["eyes"] === "sun"){
-      return  imgMapper.sun
-    }
+    return imgMapper[this.props["eyes"]];
   }
 
   changeWeight(event) {
     event.preventDefault();
     if(event.target.id === "increase"){
-      
+      this.setState({
+        imgHeight: this.state.imgHeight + 10
+      })
+    }else{
+      this.setState({
+        imgHeight: this.state.imgHeight - 10
+      })
     }
 
-  }
+  } 
 
   render() {
-    console.log(`State eyecolor: ${this.state.eyeColor}`);
-    console.log(`This.Props: ${this.props["eyes"]}`);
     return (
         <li className="hogbabies">
           <h1>{this.state.name}</h1>
@@ -56,16 +54,16 @@ class BabyHog extends Component {
               </Button.Content>
             </Button>
 
-            <Button animated onClick={this.changeWeight.bind(this)}>
+            <Button id="decrease" animated onClick={this.changeWeight.bind(this)}>
               <Button.Content visible>Decrease Weight</Button.Content>
               <Button.Content hidden>
-                <Icon name='minus' />
+                <Icon id="decrease" name='minus' />
               </Button.Content>
             </Button>
           </div>
 
 
-          <img src={this.selectImg()} style={{height: `${this.state.imgHeight}px`}} alt="MasterBlasterJrJr" />
+          <img src={this.selectImg()} id="" style={{height: `${this.state.imgHeight}px`}} alt="MasterBlasterJrJr" />
 
 
         </li>
